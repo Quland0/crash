@@ -6,7 +6,9 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-public class SessionsEntity {
+@Entity
+@Table(name = "sessions")
+public class SessionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_session", nullable = false)
@@ -19,4 +21,36 @@ public class SessionsEntity {
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     private UserEntity user;
 
+    public SessionEntity(int id_session, Date end_session, UserEntity user) {
+        this.id_session = id_session;
+        this.end_session = end_session;
+        this.user = user;
+    }
+
+    // Геттеры и сеттеры
+    public Integer getId_session() {
+        return id_session;
+    }
+
+    public void setId_session(Integer id_session) {
+        this.id_session = id_session;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public Date getEnd_session() {
+        return end_session;
+    }
+
+    public void setEnd_session(Date end_session) {
+        this.end_session = end_session;
+    }
 }
+
+
